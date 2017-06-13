@@ -3,7 +3,11 @@
 import $ from 'jquery';
 import _ from 'underscore';
 
-movie = new Movie({
+import Movie from 'models/movie';
+import MovieView from 'views/movie_view';
+
+
+var movie = new Movie({
   'title': 'Wonder Woman'
 });
 
@@ -13,5 +17,5 @@ $(document).ready(function() {
   var movieView = new MovieView({
       model: movie
   });
-  movieView.render();
+  $('section').append(movieView.render().$el);
 });
