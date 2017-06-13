@@ -1,9 +1,10 @@
 import Backbone from 'backbone';
 
-import Move from '../models/movie';
+import Movie from '../models/movie';
 
-var MovieList = Backbone.Model.extend({
-
+var MovieList = Backbone.Collection.extend({
+  model: Movie,
+  url: 'http://localhost:3000'
 });
 
-export default Movie;
+export default MovieList;
