@@ -18,4 +18,6 @@ $(document).ready(function() {
       model: movie
   });
   $('section').append(movieView.render().$el);
+
+  
 });
