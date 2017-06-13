@@ -1,23 +1,31 @@
-// /src/app.js
+
 // Import jQuery & Underscore
 import $ from 'jquery';
 import _ from 'underscore';
 
-import Movie from 'models/movie';
-import MovieView from 'views/movie_view';
+// import Movie from 'models/movie';
+import MovieList from 'collections/movie_list';
+// import MovieView from 'views/movie_view';
+import MovieListView from 'views/movie_list_view';
 
 
-var movie = new Movie({
-  'title': 'Wonder Woman'
-});
+
+var movies = new MovieList([
+  {
+  'title': 'Wonder Woman'},{
+  'title': 'Xena Warrior Princess'
+}]);
 
 
 // ready to go
 $(document).ready(function() {
-  var movieView = new MovieView({
-      model: movie
-  });
-  $('section').append(movieView.render().$el);
 
-  
+var movieListView = new MovieListView({
+model: movies,
+el: $('.main-content')
+});
+
+movieListView.render();
+
+
 });
