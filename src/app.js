@@ -40,7 +40,8 @@ import MovieListView from 'views/movie_list_view';
 
       var movieListView = new MovieListView({
         model: moviesFromRails,
-        el: $('.main-content')
+        el: $('.main-content'),
+        type: 'Rental Library'
       });
 
       movieListView.render();

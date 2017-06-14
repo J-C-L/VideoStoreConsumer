@@ -7,7 +7,8 @@ import MovieList from '../models/movie';
 
 
 var MovieListView = Backbone.View.extend({
-  initialize: function(){
+  initialize: function(movieListParams){
+    this.type = movieListParams.type;
 
     var self = this;
     this.movieViewList = [];
@@ -22,8 +23,13 @@ var MovieListView = Backbone.View.extend({
 
   },
   render: function(){
-
     var self = this;
+
+    var headingTemplate =_.template($('#movie-list-heading-template').html());
+    var headingTemplateHTML = headingTemplate({'type': this.type});
+    this.$("movie-list-heading").html(headingTemplateHTML);
+
+
     self.$('.movie-list').empty();
 
     this.movieViewList.forEach(function(movieView) {
@@ -32,7 +38,7 @@ var MovieListView = Backbone.View.extend({
 
     });
     this.delegateEvents();
-    console.log("RENDER ")
+
     return this;
 
 
@@ -50,7 +56,10 @@ var MovieListView = Backbone.View.extend({
 
   submitSearch: function(event) {
     var search_term = this.$(".search-form input[name='search']").val();
+    this.type = "Search Results";
+    console.log(this.type);
     console.log(search_term);
+
     this.movieViewList = [];
     this.model.fetch({data: $.param({'query': search_term})});
   }
