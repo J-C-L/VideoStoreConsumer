@@ -64,7 +64,19 @@ var MovieListView = Backbone.View.extend({
     console.log(search_term);
 
     this.movieViewList = [];
-    this.model.fetch({data: $.param({'query': search_term})});
+    this.model.fetch( {data: $.param({'query': search_term})} );
+
+//     this.model.fetch({
+//   success: function(data) {
+//     console.log("It worked!", data);
+//   },
+//   failure: function(data) {
+//     console.log("Failure", data);
+//   }
+// });
+
+
+
   },
   getLibraryList:function(event) {
     this.model.type = "Rental Library";
