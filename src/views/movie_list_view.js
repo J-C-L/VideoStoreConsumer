@@ -46,14 +46,8 @@ var MovieListView = Backbone.View.extend({
   },
 
   submitSearch: function(event) {
-
     var search_term = this.$(".search-form input[name='search']").val();
-    console.log(search_term);
-
-
-    // var moviesFromRails = new MovieList();
-    // console.log("HELLO from submitSearch");
-    // moviesFromRails.fetch({data: $.param({'query': this.input.search.val()}) });
+    moviesFromRails.fetch();
   }
 });
 
