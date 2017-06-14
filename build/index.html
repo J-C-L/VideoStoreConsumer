@@ -10,8 +10,25 @@
 
 </head>
 
-<body>
-  <section class = 'main-content'>
+<body class = 'main-content'>
+
+  <header>
+
+
+    <form class="search-form">
+
+          <label for="search_term">Search Term</label>
+          <input type="text" name="search_term"></input>
+
+          <button type="button" class="search button">Search</button>
+
+    </form>
+
+
+
+  </header>
+
+  <section>
     <ul class="movie-list">
 
     </ul>
@@ -21,8 +38,8 @@
 
   <!-- Templates -->
   <script id="movie-card-template" type="text/template">
-      <li><%- title %></li>
-    </script>
+    <li><%- title %></li>
+  </script>
 
 </body>
 
