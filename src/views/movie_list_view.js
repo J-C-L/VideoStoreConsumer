@@ -46,7 +46,8 @@ var MovieListView = Backbone.View.extend({
 
   },
   events: {
-    'click .search': "submitSearch"
+    'click .search': "submitSearch",
+    'click .library-list': "getLibraryList"
   },
 
   addMovie: function(movie){
@@ -64,6 +65,11 @@ var MovieListView = Backbone.View.extend({
 
     this.movieViewList = [];
     this.model.fetch({data: $.param({'query': search_term})});
+  },
+  getLibraryList:function(event) {
+    this.model.type = "Rental Library";
+    this.movieViewList = [];
+    this.model.fetch();
   }
 });
 
