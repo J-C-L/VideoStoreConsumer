@@ -33,7 +33,7 @@ import MovieListView from 'views/movie_list_view';
 $(document).ready(function() {
 
 var moviesFromRails = new MovieList();
-moviesFromRails.fetch({data: $.param({'query':'Saw'}) });
+moviesFromRails.fetch();
 
 var movieListView = new MovieListView({
 model: moviesFromRails,

@@ -3,6 +3,7 @@ import $ from 'jquery';
 import _ from 'underscore';
 
 import MovieView from './movie_view';
+import MovieList from '../models/movie';
 
 
 var MovieListView = Backbone.View.extend({
@@ -10,10 +11,6 @@ var MovieListView = Backbone.View.extend({
 
     var self = this;
     this.movieViewList = [];
-
-    console.log(this.model);
-    console.log("7777");
-
 
     this.model.forEach(function(rawMovie){
       self.addMovie(rawMovie);
@@ -24,7 +21,6 @@ var MovieListView = Backbone.View.extend({
     // this.listenTo(this.model, 'remove', this.removeMovie);
   },
   render: function(){
-    console.log("Hi from movielistview render");
 
     var self = this;
     self.$('.movie-list').empty();
@@ -38,15 +34,27 @@ var MovieListView = Backbone.View.extend({
 
 
   },
-  addMovie: function(movie){
+  events: {
+    'click .search': "submitSearch"
+  },
 
+  addMovie: function(movie){
     var movieView = new MovieView({
-        model: movie
+      model: movie
     });
     this.movieViewList.push(movieView);
+  },
 
+  submitSearch: function(event) {
+
+    var search_term = this.$(".search-form input[name='search']").val();
+    console.log(search_term);
+
+
+    // var moviesFromRails = new MovieList();
+    // console.log("HELLO from submitSearch");
+    // moviesFromRails.fetch({data: $.param({'query': this.input.search.val()}) });
   }
-
 });
 
 
