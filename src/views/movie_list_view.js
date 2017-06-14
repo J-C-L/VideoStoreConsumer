@@ -51,6 +51,7 @@ var MovieListView = Backbone.View.extend({
   submitSearch: function(event) {
     var search_term = this.$(".search-form input[name='search']").val();
     console.log(search_term);
+    this.movieViewList = [];
     this.model.fetch({data: $.param({'query': search_term})});
   }
 });
