@@ -32,11 +32,9 @@ var MovieListView = Backbone.View.extend({
 
     });
     this.delegateEvents();
-    console.log("RENDER ")
     return this;
-
-
   },
+
   events: {
     'click .search': "submitSearch"
   },
@@ -50,11 +48,9 @@ var MovieListView = Backbone.View.extend({
 
   submitSearch: function(event) {
     var search_term = this.$(".search-form input[name='search']").val();
-    console.log(search_term);
+
     this.model.fetch({data: $.param({'query': search_term})});
   }
 });
-
-
 
 export default MovieListView;
