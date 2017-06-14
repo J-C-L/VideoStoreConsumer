@@ -17,8 +17,9 @@ var MovieListView = Backbone.View.extend({
     });
 
     this.listenTo(this.model, 'add', this.addMovie);
+    this.listenTo(this.model, 'remove', this.removeMovie);
     this.listenTo(this.model, "update", this.render);
-    // this.listenTo(this.model, 'remove', this.removeMovie);
+
   },
   render: function(){
 
@@ -30,6 +31,8 @@ var MovieListView = Backbone.View.extend({
       self.$('.movie-list').append(movieView.$el);
 
     });
+    this.delegateEvents();
+    console.log("RENDER ")
     return this;
 
 
@@ -47,7 +50,8 @@ var MovieListView = Backbone.View.extend({
 
   submitSearch: function(event) {
     var search_term = this.$(".search-form input[name='search']").val();
-    moviesFromRails.fetch();
+    console.log(search_term);
+    this.model.fetch({data: $.param({'query': search_term})});
   }
 });
 
