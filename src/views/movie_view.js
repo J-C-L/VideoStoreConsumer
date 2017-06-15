@@ -6,8 +6,7 @@ import _ from 'underscore';
 var MovieView = Backbone.View.extend({
 
   tagName: 'li',
-  // className: 'movie-item',
-
+  className: 'movie-item',
 
   initialize: function()
   {
@@ -19,6 +18,12 @@ var MovieView = Backbone.View.extend({
     this.$el.html(templateHTML);
 
     return this;
+  },
+  events: {
+    "click .movie-item": "movieSelected",
+  },
+  movieSelected: function(event){
+    this.trigger("movieSelected", this.model);
   }
 });
 

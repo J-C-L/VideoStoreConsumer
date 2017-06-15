@@ -20,6 +20,7 @@ var MovieListView = Backbone.View.extend({
     this.listenTo(this.model, 'remove', this.removeMovie);
     this.listenTo(this.model, "update", this.render);
 
+
   },
   render: function(){
     var self = this;
@@ -37,8 +38,9 @@ var MovieListView = Backbone.View.extend({
     this.movieViewList.forEach(function(movieView) {
       movieView.render();
       self.$('.movie-list').append(movieView.$el);
-
+      self.listenTo(movieView, "movieSelected", self.exportMovie);
     });
+
     this.delegateEvents();
 
     return this;
@@ -64,12 +66,18 @@ var MovieListView = Backbone.View.extend({
     console.log(search_term);
 
     this.movieViewList = [];
-    this.model.fetch({data: $.param({'query': search_term})});
+    this.model.fetch({data: $.param({'query': search_term})}) ;
   },
   getLibraryList:function(event) {
     this.model.type = "Rental Library";
     this.movieViewList = [];
     this.model.fetch();
+  },
+  exportMovie: function(movie){
+    this.movieViewList = [];
+    this.model.create(movie);
+    this.model.fetch();
+  
   }
 });
 
