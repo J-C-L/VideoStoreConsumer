@@ -77,7 +77,6 @@ var MovieListView = Backbone.View.extend({
     this.movieViewList = [];
     this.model.create(movie);
     this.model.fetch();
-  
   }
 });
 

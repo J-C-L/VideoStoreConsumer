@@ -20,7 +20,7 @@ var MovieView = Backbone.View.extend({
     return this;
   },
   events: {
-    "click .movie-item": "movieSelected",
+    "click": "movieSelected",
   },
   movieSelected: function(event){
     this.trigger("movieSelected", this.model);
