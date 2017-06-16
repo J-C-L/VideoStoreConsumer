@@ -37,7 +37,10 @@ var MovieListView = Backbone.View.extend({
     this.movieViewList.forEach(function(movieView) {
       movieView.render();
       self.$('.movie-list').append(movieView.$el);
-      self.listenTo(movieView, "movieSelected", self.exportMovie);
+
+      if (self.model.type == 'Search Results'){
+        self.listenTo(movieView, "movieSelected", self.exportMovie);
+      }
     });
 
     this.delegateEvents();
