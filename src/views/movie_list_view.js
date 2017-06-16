@@ -19,13 +19,12 @@ var MovieListView = Backbone.View.extend({
     this.listenTo(this.model, 'add', this.addMovie);
     this.listenTo(this.model, 'remove', this.removeMovie);
     this.listenTo(this.model, "update", this.render);
-
-
   },
+
   render: function(){
     var self = this;
-    console.log(this.model.type);
-    console.log(this.model);
+    // console.log(this.model.type);
+    // console.log(this.model);
 
 
     var headingTemplate =_.template($('#movie-list-heading-template').html());
@@ -53,6 +52,7 @@ var MovieListView = Backbone.View.extend({
   },
 
   addMovie: function(movie){
+    console.log('addMovie', movie);
     var movieView = new MovieView({
       model: movie
     });
@@ -62,17 +62,22 @@ var MovieListView = Backbone.View.extend({
   submitSearch: function(event) {
     var search_term = this.$(".search-form input[name='search']").val();
     this.model.type = "Search Results";
-    console.log(this.model.type);
-    console.log(search_term);
+    // console.log(this.model.type);
+    // console.log(search_term);
 
     this.movieViewList = [];
-    this.model.fetch({data: $.param({'query': search_term})}) ;
+    this.model.fetch({data: $.param({'query': search_term}), remove: true}) ;
   },
+
   getLibraryList:function(event) {
     this.model.type = "Rental Library";
-    this.movieViewList = [];
-    this.model.fetch();
+    console.log("getLibraryList");
+    this.model.fetch({remove: true});
+    console.log("AFTER FETCH");
+    console.log(this);
+    console.log(this.movieViewList);
   },
+
   exportMovie: function(movie){
     this.movieViewList = [];
     this.model.create(movie);
