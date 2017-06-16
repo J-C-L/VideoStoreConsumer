@@ -52,7 +52,6 @@ var MovieListView = Backbone.View.extend({
   },
 
   addMovie: function(movie){
-    console.log('addMovie', movie);
     var movieView = new MovieView({
       model: movie
     });
@@ -71,17 +70,19 @@ var MovieListView = Backbone.View.extend({
 
   getLibraryList:function(event) {
     this.model.type = "Rental Library";
-    console.log("getLibraryList");
     this.model.fetch({remove: true});
-    console.log("AFTER FETCH");
-    console.log(this);
-    console.log(this.movieViewList);
+
   },
 
   exportMovie: function(movie){
+    this.model.type = "Rental Library";
     this.movieViewList = [];
-    this.model.create(movie);
-    this.model.fetch();
+    this.model.create(movie, {
+      success: (result)=> {
+        this.model.fetch({remove: true});
+      }
+    });
+
   }
 });
 

@@ -2,7 +2,6 @@ import Backbone from 'backbone';
 import $ from 'jquery';
 import _ from 'underscore';
 
-
 var MovieView = Backbone.View.extend({
 
   tagName: 'li',
