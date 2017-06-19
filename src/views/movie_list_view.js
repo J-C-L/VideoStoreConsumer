@@ -62,12 +62,28 @@ var MovieListView = Backbone.View.extend({
   },
 
   submitSearch: function(event) {
+    var self = this;
     var search_term = this.$(".search-form input[name='search']").val();
     this.model.type = "Search Results";
     // console.log(this.model.type);
     // console.log(search_term);
     this.movieViewList = [];
-    this.model.fetch({data: $.param({'query': search_term})}) ;
+    // this.model.fetch({data: $.param({'query': search_term})}) ;
+
+    this.model.fetch({
+      data: $.param({'query': search_term}),
+      success: function(result) {
+        console.log("Search fetch worked!", result);
+      },
+      error: function(d) {
+        console.log("Failure from search fetch", d);
+
+        self.$(".movie-list-heading").html("There was a problem with our servers. <br />Please try your search again later.");
+        self.$('.movie-list').empty();
+      }
+    });
+
+
   },
 
   getLibraryList:function(event) {
@@ -80,7 +96,7 @@ var MovieListView = Backbone.View.extend({
 
   exportMovie: function(movie){
     this.model.type = "Rental Library";
-    this.movieViewList = [];
+
     this.model.create(movie, {
       success: (result)=> {
         this.model.fetch();
