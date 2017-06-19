@@ -73,11 +73,10 @@ var MovieListView = Backbone.View.extend({
     this.model.fetch({
       data: $.param({'query': search_term}),
       success: function(result) {
-        console.log("Search fetch worked!", result);
+        // console.log("Search fetch worked!", result);
       },
       error: function(d) {
-        console.log("Failure from search fetch", d);
-
+        // console.log("Failure from search fetch", d);
         self.$(".movie-list-heading").html("There was a problem with our servers. <br />Please try your search again later.");
         self.$('.movie-list').empty();
       }
@@ -98,8 +97,11 @@ var MovieListView = Backbone.View.extend({
     this.model.type = "Rental Library";
 
     this.model.create(movie, {
+
       success: (result)=> {
+        // console.log(movie.attributes.title);
         this.model.fetch();
+        alert("You successfully added "+movie.attributes.title+ " to your database");
       }
     });
 
