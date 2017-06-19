@@ -102,10 +102,12 @@ var MovieListView = Backbone.View.extend({
         // console.log(movie.attributes.title);
         this.model.fetch();
         alert("You successfully added "+movie.attributes.title+ " to your database");
-      }
-    });
+      },
+      error: function(d) { alert("There was a problem. "+ movie.attributes.title + " could not be added.");
+    }
+  });
 
-  }
+}
 });
 
 
