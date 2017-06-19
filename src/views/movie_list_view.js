@@ -44,11 +44,8 @@ var MovieListView = Backbone.View.extend({
     });
 
     this.delegateEvents();
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     return this;
+    console.log(this.model);
   },
 
   events: {
@@ -65,13 +62,7 @@ var MovieListView = Backbone.View.extend({
 
   submitSearch: function(event) {
     var search_term = this.$(".search-form input[name='search']").val();
-<<<<<<< HEAD
 
-    this.model.fetch({data: $.param({'query': search_term})});
-  }
-});
-
-=======
     this.model.type = "Search Results";
     // console.log(this.model.type);
     // console.log(search_term);
@@ -100,5 +91,4 @@ var MovieListView = Backbone.View.extend({
 });
 
 
->>>>>>> master
 export default MovieListView;
