@@ -67,8 +67,7 @@ var MovieListView = Backbone.View.extend({
     // console.log(this.model.type);
     // console.log(search_term);
     this.movieViewList = [];
-
-    this.model.fetch({data: $.param({'query': search_term}), remove: true}) ;
+    this.model.fetch({data: $.param({'query': search_term})}) ;
   },
 
   getLibraryList:function(event) {
@@ -84,7 +83,7 @@ var MovieListView = Backbone.View.extend({
     this.movieViewList = [];
     this.model.create(movie, {
       success: (result)=> {
-        this.model.fetch({remove: true});
+        this.model.fetch();
       }
     });
 
