@@ -45,7 +45,6 @@ var MovieListView = Backbone.View.extend({
 
     this.delegateEvents();
     return this;
-    console.log(this.model);
   },
 
   events: {
@@ -62,7 +61,14 @@ var MovieListView = Backbone.View.extend({
 
   submitSearch: function(event) {
     var self = this;
+
     var search_term = this.$(".search-form input[name='search']").val();
+    if (!search_term || search_term === ""){
+      self.$(".movie-list-heading").html("Please enter a valid search term.");
+      self.$('.movie-list').empty();
+      return;
+      }
+
 
     this.model.type = "Search Results";
     // console.log(this.model.type);
@@ -73,7 +79,11 @@ var MovieListView = Backbone.View.extend({
     this.model.fetch({
       data: $.param({'query': search_term}),
       success: function(result) {
-        // console.log("Search fetch worked!", result);
+         console.log("Search fetch worked!", result);
+        if (self.movieViewList.length === 0){
+          console.log("inside if");
+          self.$('.movie-list').html("There are no results for "+ search_term+".");
+        }
       },
       error: function(d) {
         // console.log("Failure from search fetch", d);
