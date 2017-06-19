@@ -19,10 +19,14 @@
 
       <button type="button" class="search button">Search</button>
     </form>
+    <section>
+      <button type="button" class="library-list button">See Rental Collection</button>
+    </section>
   </header>
 
   <section>
-    <h2> Rental Library </h2>
+    <h2 class= "movie-list-heading"> </h2>
+
     <ul class="movie-list">
     </ul>
   </section>
@@ -34,6 +38,12 @@
 
     <li><img src= <%- image_url %>/> <%- title %></li>
   </script>/>
+
+
+  <script id="movie-list-heading-template" type="text/template">
+    <%- type %>
+  </script>
+
 
 </body>
 
