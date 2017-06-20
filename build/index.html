@@ -36,7 +36,8 @@
   <!-- Templates -->
   <script id="movie-card-template" type="text/template">
 
-    <li><img src= <%- image_url %>> <%- title %></li>
+
+    <li><img src= <%- image_url %> > <%- title %></li>
   </script>
 
 
@@ -45,13 +46,13 @@
 
     <% if (type === "Search Results") { %>
       <h3>Click on a movie to add it to your collection.</h3>
-    <% } else {%>
+      <% } else {%>
         <h3> A list of movies you currently own.</h3>
-    <% } %>
+        <% } %>
 
-  </script>
+      </script>
 
 
-      </body>
+    </body>
 
-      </html>
+    </html>

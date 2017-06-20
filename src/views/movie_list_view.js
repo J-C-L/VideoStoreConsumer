@@ -61,7 +61,14 @@ var MovieListView = Backbone.View.extend({
 
   submitSearch: function(event) {
     var self = this;
+
     var search_term = this.$(".search-form input[name='search']").val();
+    if (!search_term || search_term === ""){
+      self.$(".movie-list-heading").html("Please enter a valid search term.");
+      self.$('.movie-list').empty();
+      return;
+    }
+
 
     this.model.type = "Search Results";
     // console.log(this.model.type);
@@ -72,12 +79,14 @@ var MovieListView = Backbone.View.extend({
     this.model.fetch({
       data: $.param({'query': search_term}),
       success: function(result) {
-        // console.log("Search fetch worked!", result);
-        alert("Please click on a movie to add it to the Rental Library!");
+        console.log("Search fetch worked!", result);
+        if (self.movieViewList.length === 0){
+          console.log("inside if");
+          self.$('.movie-list').html("There are no results for "+ search_term+".");
+        }
       },
       error: function(d) {
-        console.log("Failure from search fetch", d);
-
+        // console.log("Failure from search fetch", d);
         self.$(".movie-list-heading").html("There was a problem with our servers. <br />Please try your search again later.");
         self.$('.movie-list').empty();
       }
@@ -97,12 +106,17 @@ var MovieListView = Backbone.View.extend({
     this.model.type = "Rental Library";
 
     this.model.create(movie, {
-      success: (result)=> {
-        this.model.fetch();
-      }
-    });
 
-  }
+      success: (result)=> {
+        // console.log(movie.attributes.title);
+        this.model.fetch();
+        alert("You successfully added "+movie.attributes.title+ " to your database");
+      },
+      error: function(d) { alert("There was a problem. "+ movie.attributes.title + " could not be added.");
+    }
+  });
+
+}
 });
 
 
