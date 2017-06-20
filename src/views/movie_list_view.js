@@ -104,6 +104,7 @@ var MovieListView = Backbone.View.extend({
   },
 
   exportMovie: function(movie){
+
     this.model.type = "Rental Library";
 
     this.model.create(movie, {
