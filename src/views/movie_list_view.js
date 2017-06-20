@@ -104,16 +104,20 @@ var MovieListView = Backbone.View.extend({
 
   exportMovie: function(movie){
 
-    this.model.type = "Rental Library";
+
 
     this.model.create(movie, {
 
       success: (result)=> {
+        this.model.type = "Rental Library";
         // console.log(movie.attributes.title);
         this.model.fetch();
         alert("You successfully added "+movie.attributes.title+ " to your database");
       },
-      error: function(d) { alert("There was a problem. "+ movie.attributes.title + " could not be added.");
+      error: function(model, response, options) {
+
+        console.log(model);
+        alert("There was a problem. "+ movie.attributes.title + " could not be added. You may already own this movie.");
     }
   });
 
