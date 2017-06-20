@@ -45,7 +45,6 @@ var MovieListView = Backbone.View.extend({
 
     this.delegateEvents();
     return this;
-    console.log(this.model);
   },
 
   events: {
@@ -73,7 +72,8 @@ var MovieListView = Backbone.View.extend({
     this.model.fetch({
       data: $.param({'query': search_term}),
       success: function(result) {
-        console.log("Search fetch worked!", result);
+        // console.log("Search fetch worked!", result);
+        alert("Please click on a movie to add it to the Rental Library!");
       },
       error: function(d) {
         console.log("Failure from search fetch", d);
@@ -82,7 +82,6 @@ var MovieListView = Backbone.View.extend({
         self.$('.movie-list').empty();
       }
     });
-
 
   },
 
