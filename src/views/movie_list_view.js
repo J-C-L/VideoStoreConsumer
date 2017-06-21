@@ -85,6 +85,7 @@ var MovieListView = Backbone.View.extend({
     this.model.fetch({
       data: $.param({'query': search_term}),
       success: function(result) {
+
         console.log("Search fetch worked!", result);
         if (self.movieViewList.length === 0){
           console.log("inside if");
@@ -129,10 +130,10 @@ var MovieListView = Backbone.View.extend({
 
         console.log(model);
         alert("There was a problem. "+ movie.attributes.title + " could not be added. You may already own this movie.");
-    }
-  });
+      }
+    });
 
-}
+  }
 });
 
 

@@ -73,7 +73,7 @@
   <script id="movie-card-template" type="text/template">
 
 
-    <li><img src=<%- image_url %>> <%- title %></li>
+    <li><img src= <%- image_url %> > <%- title %></li>
   </script>
 
 
@@ -82,6 +82,7 @@
 
     <% if (type === "Search Results") { %>
       <h3>Click on a movie to add it to your collection.</h3>
+<!-- <<<<<<< HEAD -->
       <% } else {%>
         <h3> A list of movies you currently own.</h3>
         <% } %>
@@ -99,4 +100,13 @@
 
     </body>
 
+<!-- =======
+    <% } else {%>
+      <h3> A list of movies you currently own.</h3>
+    <% } %>
+  </script>
+
+    </body>
+
+>>>>>>> Erica -->
     </html>
