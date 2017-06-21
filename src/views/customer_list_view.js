@@ -16,9 +16,9 @@ var CustomerListView = Backbone.View.extend({
       self.addCustomer(rawCustomer);
     });
 
-    // this.listenTo(this.model, 'add', this.addMovie);
-    // this.listenTo(this.model, 'remove', this.removeMovie);
-    // this.listenTo(this.model, "update", this.render);
+    this.listenTo(this.model, 'add', this.addCustomer);
+    this.listenTo(this.model, 'remove', this.removeCustomer);
+    this.listenTo(this.model, "update", this.render);
   },
 
   render: function(){

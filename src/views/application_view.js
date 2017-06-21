@@ -10,6 +10,11 @@ import CustomerView from './customer_view';
 import CustomerList from '../collections/customer_list';
 import CustomerListView from 'views/customer_list_view';
 
+import RentalView from './rental_view';
+import RentalList from '../collections/rental_list';
+import RentalListView from 'views/rental_list_view';
+
+
 
 var ApplicationView = Backbone.View.extend({
   initialize: function(){
@@ -25,15 +30,27 @@ var ApplicationView = Backbone.View.extend({
     // });
 
 
-    var customersFromRails = new CustomerList();
-    customersFromRails.fetch();
-    console.log(customersFromRails);
+    // var customersFromRails = new CustomerList();
+    // customersFromRails.fetch();
+    // // console.log(customersFromRails);
+    //
+    // this.customerListView = new CustomerListView({
+    //   model: customersFromRails,
+    //   el: $('.customer-list-section')
+    // });
+    //
+    // console.log(this.customerListView);
 
-    this.customerListView = new CustomerListView({
-      model: customersFromRails,
-      el: $('.customer-list-section')
+    var rentalsFromRails = new RentalList();
+    rentalsFromRails.fetch();
+    // console.log(rentalsFromRails);
+
+    this.rentalListView = new RentalListView({
+      model: rentalsFromRails,
+      el: $('.rental-list-section')
     });
 
+    console.log(this.rentalListView);
 
 
     //   this.listenTo(this.model, 'add', this.addMovie);
@@ -45,7 +62,9 @@ var ApplicationView = Backbone.View.extend({
     // var self = this;
     console.log("Hi from Application render!");
     // this.movieListView.render();
-    this.customerListView.render();
+    this.rentalListView.render();
+
+    // this.customerListView.render();
     // var headingTemplate =_.template($('#movie-list-heading-template').html());
     // var headingTemplateHTML = headingTemplate(this.model);
     // this.$(".movie-list-heading").html(headingTemplateHTML);

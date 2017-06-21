@@ -43,6 +43,11 @@
     </ul>
   </section>
 
+  <section class="rental-list-section">
+    <h2> Rental </h2>
+    <ul class="rental-list">
+    </ul>
+  </section>
 
 
 
@@ -69,8 +74,11 @@
 
 
       <script id="customer-name-template" type="text/template">
-        <p> test from template </p>
         <li><%- name %></li>
+      </script>
+
+      <script id="rental-name-template" type="text/template">
+        <li>Title: <%- title %>;   Customer: <%- name%></li>
       </script>
 
 
