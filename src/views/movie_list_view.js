@@ -19,9 +19,12 @@ var MovieListView = Backbone.View.extend({
     this.listenTo(this.model, 'add', this.addMovie);
     this.listenTo(this.model, 'remove', this.removeMovie);
     this.listenTo(this.model, "update", this.render);
+    this.listenTo(this.model, "reset", this.render);
+
   },
 
   render: function(){
+    console.log("RENDER");
     var self = this;
     // console.log(this.model.type);
     // console.log(this.model);
@@ -53,6 +56,7 @@ var MovieListView = Backbone.View.extend({
   },
 
   addMovie: function(movie){
+    console.log("addMOVIE!!!");
     var movieView = new MovieView({
       model: movie
     });
@@ -67,6 +71,7 @@ var MovieListView = Backbone.View.extend({
     if (!search_term || search_term === ""){
       self.$(".movie-list-heading").html("Please enter a valid search term.");
       self.$('.movie-list').empty();
+      this.model.type = "Search Results";
       return;
     }
 
@@ -97,9 +102,14 @@ var MovieListView = Backbone.View.extend({
 
   getLibraryList:function(event) {
     if(this.model.type !== "Rental Library") {
+      // console.log("INSIDE IF");
       this.movieViewList = [];
+      // console.log(this.model);
+      // empties models from collection
+      this.model.reset();
       this.model.type = "Rental Library";
       this.model.fetch();
+      console.log(this.movieViewList);
     }
   },
 

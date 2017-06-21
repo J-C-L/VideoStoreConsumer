@@ -20,14 +20,12 @@ var ApplicationView = Backbone.View.extend({
   initialize: function(){
     console.log("Hi from Application initialize!");
 
-    // var moviesFromRails = new MovieList();
-    // moviesFromRails.fetch();
-    // console.log(moviesFromRails);
-    //
-    // this.movieListView = new MovieListView({
-    //   model: moviesFromRails,
-    //   el: $('.movie-list-section')
-    // });
+    this.moviesFromRails = new MovieList();
+
+    this.movieListView = new MovieListView({
+      model: this.moviesFromRails,
+      el: $('.movie-list-section')
+    });
 
 
     // var customersFromRails = new CustomerList();
@@ -41,16 +39,16 @@ var ApplicationView = Backbone.View.extend({
     //
     // console.log(this.customerListView);
 
-    var rentalsFromRails = new RentalList();
-    rentalsFromRails.fetch();
-    // console.log(rentalsFromRails);
+    // var rentalsFromRails = new RentalList();
+    // rentalsFromRails.fetch();
+    // // console.log(rentalsFromRails);
+    //
+    // this.rentalListView = new RentalListView({
+    //   model: rentalsFromRails,
+    //   el: $('.rental-list-section')
+    // });
 
-    this.rentalListView = new RentalListView({
-      model: rentalsFromRails,
-      el: $('.rental-list-section')
-    });
-
-    console.log(this.rentalListView);
+    // console.log(this.rentalListView);
 
 
     //   this.listenTo(this.model, 'add', this.addMovie);
@@ -62,7 +60,7 @@ var ApplicationView = Backbone.View.extend({
     // var self = this;
     console.log("Hi from Application render!");
     // this.movieListView.render();
-    this.rentalListView.render();
+    // this.rentalListView.render();
 
     // this.customerListView.render();
     // var headingTemplate =_.template($('#movie-list-heading-template').html());
@@ -80,8 +78,13 @@ var ApplicationView = Backbone.View.extend({
     'click .library-list': "getLibraryList"
   },
   getLibraryList: function(e){
-    this.movieListView.getLibraryList();
+
+    // this.moviesFromRails.fetch();
+    // console.log(moviesFromRails);
+
+      this.movieListView.getLibraryList();
   },
+
   submitSearch: function(e){
     var search_term = this.$(".search-form input[name='search']").val();
     this.movieListView.submitSearch(search_term);
