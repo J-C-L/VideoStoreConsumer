@@ -3,8 +3,8 @@
 import $ from 'jquery';
 import _ from 'underscore';
 
-import ApplicationtView from 'views/application_view';
 
+import ApplicationView from 'views/application_view';
 
 // ready to go
 $(document).ready(function() {
@@ -14,5 +14,6 @@ $(document).ready(function() {
   });
 
   applicationView.render();
+
 
 });

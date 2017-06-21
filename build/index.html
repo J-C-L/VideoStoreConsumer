@@ -28,12 +28,23 @@
     </section>
   </header>
 
-  <section>
+  <section class="movie-list-section">
     <h2 class= "movie-list-heading"> </h2>
 
     <ul class="movie-list">
     </ul>
   </section>
+
+
+  <section class="customer-list-section">
+    <h2 class= "customer-heading"> </h2>
+
+    <ul class="customer-list">
+    </ul>
+  </section>
+
+
+
 
   <script src="/app.bundle.js"></script>
 
@@ -55,6 +66,14 @@
         <% } %>
 
       </script>
+
+
+      <script id="customer-name-template" type="text/template">
+        <p> test from template </p>
+        <li><%- name %></li>
+      </script>
+
+
 
 
     </body>

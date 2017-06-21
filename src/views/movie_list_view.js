@@ -59,10 +59,11 @@ var MovieListView = Backbone.View.extend({
     this.movieViewList.push(movieView);
   },
 
-  submitSearch: function(event) {
+  submitSearch: function(search_term) {
     var self = this;
-
-    var search_term = this.$(".search-form input[name='search']").val();
+    // console.log("Hi from submitSearch in movie_list_view");
+    // console.log(search_term);
+    // var search_term = this.$(".search-form input[name='search']").val();
     if (!search_term || search_term === ""){
       self.$(".movie-list-heading").html("Please enter a valid search term.");
       self.$('.movie-list').empty();
