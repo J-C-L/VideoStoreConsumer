@@ -49,7 +49,7 @@ var RentalListView = Backbone.View.extend({
     var rentalView = new RentalView({
       model: rental
     });
-    this.rentalViewList.push(customerView);
+    this.rentalViewList.push(rentalView);
   }
 
 });
