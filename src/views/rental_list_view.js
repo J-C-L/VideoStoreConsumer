@@ -27,7 +27,7 @@ var RentalListView = Backbone.View.extend({
     // console.log(this.model);
 
 
-    this.$(".rental-heading").html("Rentals");
+    this.$(".rental-heading").html("Overdue Rentals");
 
 
     self.$('.rental-list').empty();
