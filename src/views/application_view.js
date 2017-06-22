@@ -62,22 +62,33 @@ var ApplicationView = Backbone.View.extend({
 
   events: {
     "click .search": function(e) {
-        this.clearListsandViews(e);
-        this.submitSearch(e);
-      },
+      this.clearListsandViews(e);
+      this.submitSearch(e);
+    },
 
     "click .library-list": function(e) {
-        this.clearListsandViews(e);
-        this.getLibraryList(e);
-      },
-    "click .customer-list": function(e) {
+      this.clearListsandViews(e);
+      this.getLibraryList(e);
+    },
+    "click .customer-list, .checkout": function(e) {
       this.clearListsandViews(e);
       this.getCustomerList(e);
-      },
+    },
     "click .overdue-list": function(e) {
       this.clearListsandViews(e);
       this.getOverdueList(e);
-      }
+    },
+
+    // "click .checkout": function(e) {
+    //   console.log("YOU MADE IT TO CHECKIN");
+    //   this.clearListsandViews(e);
+    //   this.getCustomerList(e);
+    // },
+
+    // "click .checkin": function(e) {
+    //   this.clearListsandViews(e);
+    //   this.getOverdueList(e);
+    // }
   },
 
   clearListsandViews: function(e){
