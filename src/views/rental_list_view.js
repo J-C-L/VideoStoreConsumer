@@ -58,7 +58,7 @@ var RentalListView = Backbone.View.extend({
       model: rental
     });
     this.rentalViewList.push(rentalView);
-  }
+  },
 
 });
 

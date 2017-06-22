@@ -23,13 +23,15 @@ var CustomerListView = Backbone.View.extend({
 
   render: function(){
 
-    console.log("render customer list");
+    // console.log("render customer list");
     var self = this;
     // console.log(this.model.type);
     // console.log(this.model);
 
-
     this.$(".customer-heading").html("Customers");
+    if (this.model.type === "forCheckout"){
+      this.$(".customer-heading").html("<h3> Which customer is checking out?  </h3>");
+    }
 
 
     self.$('.customer-list').empty();
@@ -48,12 +50,13 @@ var CustomerListView = Backbone.View.extend({
   },
 
   getCustomerList: function(e){
-    console.log("Hi from getCustomerList");
+    // console.log("Hi from getCustomerList");
     this.customerViewList = [];
     this.model.reset();
     this.model.fetch();
-    console.log(this.model);
-    console.log(this.customerViewList);
+
+    // console.log(this.model);
+    // console.log(this.customerViewList);
     // this.render();
   },
 

@@ -72,6 +72,7 @@ var ApplicationView = Backbone.View.extend({
     },
     "click .customer-list, .checkout": function(e) {
       this.clearListsandViews(e);
+      this.customerListView.model.type = "forViewing";
       this.getCustomerList(e);
     },
     "click .overdue-list": function(e) {
@@ -79,11 +80,12 @@ var ApplicationView = Backbone.View.extend({
       this.getOverdueList(e);
     },
 
-    // "click .checkout": function(e) {
-    //   console.log("YOU MADE IT TO CHECKIN");
-    //   this.clearListsandViews(e);
-    //   this.getCustomerList(e);
-    // },
+    "click .checkout": function(e) {
+      this.clearListsandViews(e);
+      this.customerListView.model.type = "forCheckout";
+      // console.log(this.customerListView.model.type);
+      this.getCustomerList(e);
+    },
 
     // "click .checkin": function(e) {
     //   this.clearListsandViews(e);
