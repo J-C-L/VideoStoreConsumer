@@ -44,6 +44,14 @@ var RentalListView = Backbone.View.extend({
 
   events: {
   },
+  getOverdueList: function(e){
+    console.log("OVERDUE!!!!!!");
+
+    this.rentalViewList = [];
+    this.model.reset();
+    this.model.fetch();
+    console.log(this.model);
+  },
 
   addRental: function(rental){
     var rentalView = new RentalView({

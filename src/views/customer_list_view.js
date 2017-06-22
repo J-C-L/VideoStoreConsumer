@@ -45,6 +45,13 @@ var CustomerListView = Backbone.View.extend({
   events: {
   },
 
+  getCustomerList: function(e){
+    this.customerViewList = [];
+    this.model.reset();
+    this.model.fetch();
+  },
+
+
   addCustomer: function(customer){
     var customerView = new CustomerView({
       model: customer

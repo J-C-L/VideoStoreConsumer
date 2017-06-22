@@ -110,14 +110,11 @@ var MovieListView = Backbone.View.extend({
       this.model.reset();
       this.model.type = "Rental Library";
       this.model.fetch();
-      console.log(this.movieViewList);
+      // console.log(this.movieViewList);
     }
   },
 
   exportMovie: function(movie){
-
-
-
     this.model.create(movie, {
 
       success: (result)=> {

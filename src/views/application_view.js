@@ -21,35 +21,23 @@ var ApplicationView = Backbone.View.extend({
     console.log("Hi from Application initialize!");
 
     this.moviesFromRails = new MovieList();
-
     this.movieListView = new MovieListView({
       model: this.moviesFromRails,
       el: $('.movie-list-section')
     });
 
 
-    // var customersFromRails = new CustomerList();
-    // customersFromRails.fetch();
-    // // console.log(customersFromRails);
-    //
-    // this.customerListView = new CustomerListView({
-    //   model: customersFromRails,
-    //   el: $('.customer-list-section')
-    // });
-    //
-    // console.log(this.customerListView);
+    this.customersFromRails = new CustomerList();
+    this.customerListView = new CustomerListView({
+      model: this.customersFromRails,
+      el: $('.customer-list-section')
+    });
 
-    // var rentalsFromRails = new RentalList();
-    // rentalsFromRails.fetch();
-    // // console.log(rentalsFromRails);
-    //
-    // this.rentalListView = new RentalListView({
-    //   model: rentalsFromRails,
-    //   el: $('.rental-list-section')
-    // });
-
-    // console.log(this.rentalListView);
-
+    this.rentalsFromRails = new RentalList();
+    this.rentalListView = new RentalListView({
+      model: this.rentalsFromRails,
+      el: $('.rental-list-section')
+    });
 
     //   this.listenTo(this.model, 'add', this.addMovie);
     //   this.listenTo(this.model, 'remove', this.removeMovie);
@@ -75,14 +63,21 @@ var ApplicationView = Backbone.View.extend({
 
   events: {
     'click .search': "submitSearch",
-    'click .library-list': "getLibraryList"
+    'click .library-list': "getLibraryList",
+    'click .customer-list': "getCustomerList",
+    'click .overdue-list': "getOverdueList"
   },
+
   getLibraryList: function(e){
+    this.movieListView.getLibraryList();
+  },
 
-    // this.moviesFromRails.fetch();
-    // console.log(moviesFromRails);
+  getCustomerList: function(e){
+    this.customerListView.getCustomerList();
+  },
 
-      this.movieListView.getLibraryList();
+  getOverdueList: function(e){
+    this.rentalListView.getOverdueList();
   },
 
   submitSearch: function(e){
