@@ -26,7 +26,6 @@ var ApplicationView = Backbone.View.extend({
       el: $('.movie-list-section')
     });
 
-
     this.customersFromRails = new CustomerList();
     this.customerListView = new CustomerListView({
       model: this.customersFromRails,
@@ -62,25 +61,46 @@ var ApplicationView = Backbone.View.extend({
   },
 
   events: {
-    'click .search': "submitSearch",
-    'click .library-list': "getLibraryList",
-    'click .customer-list': "getCustomerList",
-    'click .overdue-list': "getOverdueList"
+    "click .search": function(e) {
+        this.clearListsandViews(e);
+        this.submitSearch(e);
+      },
+
+    "click .library-list": function(e) {
+        this.clearListsandViews(e);
+        this.getLibraryList(e);
+      },
+    "click .customer-list": function(e) {
+      this.clearListsandViews(e);
+      this.getCustomerList(e);
+      },
+    "click .overdue-list": function(e) {
+      this.clearListsandViews(e);
+      this.getOverdueList(e);
+      }
   },
 
+  clearListsandViews: function(e){
+    this.movieListView.$el.hide();
+    this.customerListView.$el.hide();
+    this.rentalListView.$el.hide();
+  },
   getLibraryList: function(e){
+    this.movieListView.$el.show();
     this.movieListView.getLibraryList();
   },
-
   getCustomerList: function(e){
+    this.customerListView.$el.show();
     this.customerListView.getCustomerList();
   },
 
   getOverdueList: function(e){
+    this.rentalListView.$el.show();
     this.rentalListView.getOverdueList();
   },
 
   submitSearch: function(e){
+    this.movieListView.$el.show();
     var search_term = this.$(".search-form input[name='search']").val();
     this.movieListView.submitSearch(search_term);
   }

@@ -18,10 +18,12 @@ var CustomerListView = Backbone.View.extend({
 
     this.listenTo(this.model, 'add', this.addCustomer);
     this.listenTo(this.model, 'remove', this.removeCustomer);
-    this.listenTo(this.model, "update", this.render);
+    this.listenTo(this.model, "update sync", this.render);
   },
 
   render: function(){
+
+    console.log("render customer list");
     var self = this;
     // console.log(this.model.type);
     // console.log(this.model);
@@ -46,9 +48,13 @@ var CustomerListView = Backbone.View.extend({
   },
 
   getCustomerList: function(e){
+    console.log("Hi from getCustomerList");
     this.customerViewList = [];
     this.model.reset();
     this.model.fetch();
+    console.log(this.model);
+    console.log(this.customerViewList);
+    // this.render();
   },
 
 
