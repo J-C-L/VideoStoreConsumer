@@ -40,12 +40,11 @@ var CustomerListView = Backbone.View.extend({
       customerView.render();
       self.$('.customer-list').prepend(customerView.$el);
 
-      if (this.model.type === "forCheckout"){
+      if (self.model.type === "forCheckout"){
         self.listenTo(customerView, "customerSelected", self.assignCustomer);
       }
 
     });
-
     this.delegateEvents();
     return this;
   },
@@ -59,7 +58,8 @@ var CustomerListView = Backbone.View.extend({
     this.model.reset();
     this.model.fetch();
 
-    // console.log(this.model);
+
+      console.log(this);
     // console.log(this.customerViewList);
     // this.render();
   },
@@ -73,9 +73,7 @@ var CustomerListView = Backbone.View.extend({
   },
 
   assignCustomer: function(customer){
-    this.model.reset();
-    this.CustomerViewList=[];
-    addCustomer(customer);
+    this.trigger("customerChosen", customer);
   }
 });
 

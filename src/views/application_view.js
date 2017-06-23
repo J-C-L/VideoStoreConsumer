@@ -37,27 +37,10 @@ var ApplicationView = Backbone.View.extend({
       model: this.rentalsFromRails,
       el: $('.rental-list-section')
     });
-
-    //   this.listenTo(this.model, 'add', this.addMovie);
-    //   this.listenTo(this.model, 'remove', this.removeMovie);
-    //   this.listenTo(this.model, "update", this.render);
+    this.listenTo(this.customerListView, 'customerChosen', this.askForMovie);
   },
 
   render: function(){
-    // var self = this;
-    console.log("Hi from Application render!");
-    // this.movieListView.render();
-    // this.rentalListView.render();
-
-    // this.customerListView.render();
-    // var headingTemplate =_.template($('#movie-list-heading-template').html());
-    // var headingTemplateHTML = headingTemplate(this.model);
-    // this.$(".movie-list-heading").html(headingTemplateHTML);
-    //
-    //
-    // self.$('.movie-list').empty();
-
-    // return this;
   },
 
   events: {
@@ -83,8 +66,8 @@ var ApplicationView = Backbone.View.extend({
     "click .checkout": function(e) {
       this.clearListsandViews(e);
       this.customerListView.model.type = "forCheckout";
-      // console.log(this.customerListView.model.type);
       this.getCustomerList(e);
+      // this.getLibraryList(e);
     },
 
     // "click .checkin": function(e) {
@@ -116,6 +99,9 @@ var ApplicationView = Backbone.View.extend({
     this.movieListView.$el.show();
     var search_term = this.$(".search-form input[name='search']").val();
     this.movieListView.submitSearch(search_term);
+  },
+  askForMovie: function(customer){
+    console.log("askForMovie for",customer);
   }
 
 });
