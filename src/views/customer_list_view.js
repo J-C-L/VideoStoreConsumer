@@ -18,12 +18,12 @@ var CustomerListView = Backbone.View.extend({
     this.listenTo(this.model, 'add', this.addCustomer);
     this.listenTo(this.model, 'remove', this.removeCustomer);
     this.listenTo(this.model, "update", this.render);
-    this.listenTo(this.model, "reset", this.render);
+    // this.listenTo(this.model, "sync", this.render);
+    // this.listenTo(this.model, "reset", this.render);
   },
 
   render: function(){
-    console.log("Customer rendered");
-    // console.log("render customer list");
+    console.log("Customer rendered!!!");
     var self = this;
     // console.log(this.model.type);
     // console.log(this.model);
