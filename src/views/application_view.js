@@ -117,7 +117,28 @@ var ApplicationView = Backbone.View.extend({
     this.movie = movie;
     console.log(this.movie, this.customer);
 
+    // SETUP FOR CREATING RETNAL ...IF TIME
+    // var today = new Date();
+    // var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    // var due = new Date();
+    // var msDueDate = new Date(due.setTime( due.getTime() + 14 * 86400000 ));
+    // var dueDate = msDueDate.getFullYear()+'-'+(msDueDate.getMonth()+1)+'-'+msDueDate.getDate();
+    //
+    // var params = {
+    //   customer_id: this.customer.attributes.id,
+    //   movie_id: this.movie.attributes.id,
+    //   checkout_date: date,
+    //   due_date: dueDate
+    // };
+    //
+    // var title = this.customer.attributes.title;
+    //
+    // this.model.create(params, {type: "POST", url:'http://localhost:3000/rentals/' + title + '/check-out'});
+    //
+    // this.movie = null;
+    // this.customer = null;
   }
+
 
 });
 
