@@ -3,7 +3,6 @@ import $ from 'jquery';
 import _ from 'underscore';
 
 import CustomerView from './customer_view';
-import CustomerList from '../collections/customer_list';
 
 
 var CustomerListView = Backbone.View.extend({
@@ -18,31 +17,33 @@ var CustomerListView = Backbone.View.extend({
 
     this.listenTo(this.model, 'add', this.addCustomer);
     this.listenTo(this.model, 'remove', this.removeCustomer);
-    this.listenTo(this.model, "update sync", this.render);
+    this.listenTo(this.model, "update", this.render);
+    this.listenTo(this.model, "reset", this.render);
   },
 
   render: function(){
-
+    console.log("Customer rendered");
     // console.log("render customer list");
     var self = this;
     // console.log(this.model.type);
     // console.log(this.model);
 
     this.$(".customer-heading").html("Customers");
+
     if (this.model.type === "forCheckout"){
       this.$(".customer-heading").html("<h3> Which customer is checking out?  </h3>");
     }
-
-
+    //  LOOOK HERE TO DEBUG CUSTOMER LISTEN EVENTS"
     self.$('.customer-list').empty();
 
     this.customerViewList.forEach(function(customerView) {
       customerView.render();
       self.$('.customer-list').prepend(customerView.$el);
+      self.listenTo(customerView, "customerSelected", self.assignCustomer);
 
     });
 
-    // this.delegateEvents();
+    this.delegateEvents();
     return this;
   },
 
@@ -66,6 +67,10 @@ var CustomerListView = Backbone.View.extend({
       model: customer
     });
     this.customerViewList.push(customerView);
+  },
+
+  assignCustomer: function(customer){
+    console.log("YOU DID IT, CHAMP!!");
   }
 
 });

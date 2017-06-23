@@ -3,7 +3,6 @@ import $ from 'jquery';
 import _ from 'underscore';
 
 var CustomerView = Backbone.View.extend({
-
   tagName: 'li',
   className: 'customer-item',
 
@@ -21,7 +20,10 @@ var CustomerView = Backbone.View.extend({
     return this;
   },
   events: {
-    // "click": "movieSelected"
+    "click": "customerSelected"
+  },
+  customerSelected: function(event){
+    this.trigger("customerSelected", this.model);
   }
 });
 

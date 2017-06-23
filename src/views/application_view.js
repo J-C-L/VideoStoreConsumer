@@ -70,7 +70,7 @@ var ApplicationView = Backbone.View.extend({
       this.clearListsandViews(e);
       this.getLibraryList(e);
     },
-    "click .customer-list, .checkout": function(e) {
+    "click .customer-button": function(e) {
       this.clearListsandViews(e);
       this.customerListView.model.type = "forViewing";
       this.getCustomerList(e);

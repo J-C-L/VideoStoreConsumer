@@ -3,7 +3,6 @@ import $ from 'jquery';
 import _ from 'underscore';
 
 import MovieView from './movie_view';
-import MovieList from '../models/movie';
 
 
 var MovieListView = Backbone.View.extend({
@@ -28,9 +27,8 @@ var MovieListView = Backbone.View.extend({
     var self = this;
     // console.log(this.model.type);
     // console.log(this.model);
-
-
     var headingTemplate =_.template($('#movie-list-heading-template').html());
+
     var headingTemplateHTML = headingTemplate(this.model);
     this.$(".movie-list-heading").html(headingTemplateHTML);
 
