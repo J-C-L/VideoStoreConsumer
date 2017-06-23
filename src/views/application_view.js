@@ -101,7 +101,7 @@ var ApplicationView = Backbone.View.extend({
     this.movieListView.submitSearch(search_term);
   },
   askForMovie: function(customer){
-
+    this.customer = customer;
     this.clearListsandViews();
     this.movieListView.model.type = "";
     this.getLibraryList();
