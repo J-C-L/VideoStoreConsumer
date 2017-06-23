@@ -102,8 +102,9 @@ var ApplicationView = Backbone.View.extend({
   },
   askForMovie: function(customer){
     this.customer = customer;
+
     this.clearListsandViews();
-    this.movieListView.model.type = "";
+    this.movieListView.model.type = "Checkout Mode";
     this.getLibraryList();
     console.log("askForMovie for",customer);
 

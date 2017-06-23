@@ -78,15 +78,24 @@
 
 
   <script id="movie-list-heading-template" type="text/template">
-    <%- type %>
+
 
     <% if (type === "Search Results") { %>
+      <%- type %>
       <h3>Click on a movie to add it to your collection.</h3>
-      <% } else {%>
-        <h3> A list of movies you currently own.</h3>
-        <% } %>
 
-      </script>
+    <% } else if (type === "Checkout Mode") { %>
+      <h3>Which movie would the customer like to checkout?</h3>
+
+    <% } else {%>
+      <%- type %>
+      <h3> A list of movies you currently own.</h3>
+    <% } %>
+
+
+
+
+    </script>
 
 
       <script id="customer-name-template" type="text/template">

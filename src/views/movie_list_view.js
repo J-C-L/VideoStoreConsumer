@@ -42,6 +42,13 @@ var MovieListView = Backbone.View.extend({
       if (self.model.type == 'Search Results'){
         self.listenTo(movieView, "movieSelected", self.exportMovie);
       }
+      if (self.model.type == 'Checkout Mode'){
+        self.listenTo(movieView, "movieToCheckout", self.assignMovie);
+      }
+
+
+
+
     });
 
     this.delegateEvents();
@@ -106,9 +113,13 @@ var MovieListView = Backbone.View.extend({
       // console.log(this.model);
       // empties models from collection
       this.model.reset();
-      this.model.type = "Rental Library";
+
+      if (this.model.type != "Checkout Mode"){
+        this.model.type = "Rental Library";
+      }
+
       this.model.fetch();
-      // console.log(this.movieViewList);
+      console.log(this.model.type);
     }
   },
 
