@@ -43,11 +43,8 @@ var MovieListView = Backbone.View.extend({
         self.listenTo(movieView, "movieSelected", self.exportMovie);
       }
       if (self.model.type == 'Checkout Mode'){
-        self.listenTo(movieView, "movieToCheckout", self.assignMovie);
+        self.listenTo(movieView, "movieSelected", self.assignMovie);
       }
-
-
-
 
     });
 
@@ -138,8 +135,11 @@ var MovieListView = Backbone.View.extend({
         alert("There was a problem. "+ movie.attributes.title + " could not be added. You may already own this movie.");
       }
     });
+  },
+  assignMovie:function(movie){
+    this.trigger("movieChosen", movie);
+}
 
-  }
 });
 
 

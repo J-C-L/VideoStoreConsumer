@@ -37,7 +37,9 @@ var ApplicationView = Backbone.View.extend({
       model: this.rentalsFromRails,
       el: $('.rental-list-section')
     });
+
     this.listenTo(this.customerListView, 'customerChosen', this.askForMovie);
+    this.listenTo(this.movieListView, 'movieChosen', this.processRental);
   },
 
   render: function(){
@@ -110,6 +112,10 @@ var ApplicationView = Backbone.View.extend({
     this.getLibraryList();
     console.log("askForMovie for",customer);
 
+  },
+  processRental: function(movie){
+    this.movie = movie;
+    console.log(this.movie, this.customer);
 
   }
 
