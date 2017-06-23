@@ -39,7 +39,10 @@ var CustomerListView = Backbone.View.extend({
     this.customerViewList.forEach(function(customerView) {
       customerView.render();
       self.$('.customer-list').prepend(customerView.$el);
-      self.listenTo(customerView, "customerSelected", self.assignCustomer);
+
+      if (this.model.type === "forCheckout"){
+        self.listenTo(customerView, "customerSelected", self.assignCustomer);
+      }
 
     });
 
@@ -70,9 +73,10 @@ var CustomerListView = Backbone.View.extend({
   },
 
   assignCustomer: function(customer){
-    console.log("YOU DID IT, CHAMP!!");
+    this.model.reset();
+    this.CustomerViewList=[];
+    addCustomer(customer);
   }
-
 });
 
 
