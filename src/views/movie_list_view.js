@@ -107,20 +107,20 @@ var MovieListView = Backbone.View.extend({
   },
 
   getLibraryList:function(event) {
-    if(this.model.type !== "Rental Library") {
-      // console.log("INSIDE IF");
+    // if(this.model.type !== "Rental Library") {
+      //  console.log("INSIDE GET LIBRARY");
       this.movieViewList = [];
       // console.log(this.model);
       // empties models from collection
       this.model.reset();
 
-      if (this.model.type != "Checkout Mode"){
-        this.model.type = "Rental Library";
-      }
+      // if (this.model.type != "Checkout Mode"){
+      //   this.model.type = "Rental Library";
+      // }
 
       this.model.fetch();
       console.log(this.model.type);
-    }
+    // }
   },
 
   exportMovie: function(movie){

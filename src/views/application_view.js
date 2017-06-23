@@ -51,7 +51,9 @@ var ApplicationView = Backbone.View.extend({
 
     "click .library-list": function(e) {
       this.clearListsandViews(e);
+      this.movieListView.model.type = "Rental Library";
       this.getLibraryList(e);
+
     },
     "click .customer-button": function(e) {
       this.clearListsandViews(e);
